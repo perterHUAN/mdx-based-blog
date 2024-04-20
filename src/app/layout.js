@@ -10,6 +10,7 @@ import "./styles.css";
 
 import RespectMotionPreferences from "@/components/RespectMotionPreferences";
 
+import { cookies } from "next/headers";
 const mainFont = Work_Sans({
   subsets: ["latin"],
   display: "fallback",
@@ -25,7 +26,8 @@ const monoFont = Spline_Sans_Mono({
 
 function RootLayout({ children }) {
   // TODO: Dynamic theme depending on user preference
-  const theme = "light";
+  const savedTheme = cookies().get('color-theme');
+  const theme = savedTheme ? savedTheme.value : "light";
 
   return (
     <RespectMotionPreferences>
