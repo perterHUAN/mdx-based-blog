@@ -9,7 +9,6 @@ import SliderControl from "@/components/SliderControl";
 import Equation from "./Equation";
 import styles from "./DivisionGroupsDemo.module.css";
 import { motion, LayoutGroup } from "framer-motion";
-import { Layout } from "react-feather";
 
 function DivisionGroupsDemo({
   numOfItems = 12,
