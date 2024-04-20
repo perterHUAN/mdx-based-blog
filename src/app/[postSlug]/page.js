@@ -7,10 +7,7 @@ import styles from "./postSlug.module.css";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { loadBlogPost } from "@/helpers/file-helpers";
 import { BLOG_TITLE } from "@/constants";
-import CodeSnippet from "@/components/CodeSnippet";
-const DivisionGroupsDemo = React.lazy(() =>
-  import("@/components/DivisionGroupsDemo")
-);
+import COMPONENT_MAP from "@/helpers/mdx-components";
 export async function generateMetadata({ params }) {
   const { frontmatter } = await loadBlogPost(params.postSlug);
   return {
@@ -27,10 +24,7 @@ async function BlogPost({ params }) {
         publishedOn={frontmatter.publishedOn}
       />
       <div className={styles.page}>
-        <MDXRemote
-          source={content}
-          components={{ pre: CodeSnippet, DivisionGroupsDemo }}
-        />
+        <MDXRemote source={content} components={COMPONENT_MAP} />
       </div>
     </article>
   );
