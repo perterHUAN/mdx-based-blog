@@ -2,14 +2,18 @@
 import React from "react";
 import { Sun, Moon } from "react-feather";
 import Cookies from "js-cookie";
-import { LIGHT_TOKENS, DARK_TOKENS } from "@/constants";
+import {
+  LIGHT_TOKENS,
+  DARK_TOKENS,
+  COLOR_THEME_COOKIE_NAME,
+} from "@/constants";
 import VisuallyHidden from "../VisuallyHidden";
 function DarkLightToggle({ intialTheme, cls }) {
   const [theme, setTheme] = React.useState(intialTheme);
   function handleClick() {
     const nextTheme = theme === "light" ? "dark" : "light";
     setTheme(nextTheme);
-    Cookies.set("color-theme", nextTheme, {
+    Cookies.set(COLOR_THEME_COOKIE_NAME, nextTheme, {
       expires: 1000,
     });
     const root = document.documentElement;
